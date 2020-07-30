@@ -1,0 +1,127 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' type='text/css')
+  link(rel='stylesheet' href='../css/theme.css' type='text/css')
+  script(src='jquery-3.5.1.min.js')
+nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+  .container
+    button.navbar-toggler.navbar-toggler-right.border-0(type='button' data-toggle='collapse' data-target='#navbar12')
+      span.navbar-toggler-icon
+    #navbar12.collapse.navbar-collapse
+      a.navbar-brand.d-none.d-md-block(href='#')
+        i.fa.d-inline.fa-lg.fa-circle
+        b(style='')
+          | AV List
+          br
+      ul.navbar-nav.mx-auto
+      ul.navbar-nav
+        li.nav-item
+          a.nav-link(href='#')
+            i.fa.fa-user.fa-fw
+            | Username
+        li.nav-item
+          a.nav-link.text-primary(href='#')
+            i.fa.fa-fw.fa-sign-out
+            | Salir
+.py-5.text-center(style='background-image: linear-gradient(to left bottom, rgba(189, 195, 199, .75), rgba(44, 62, 80, .75)); background-size: 100%;')
+  .container
+    .row
+      .mx-auto.col-md-6
+        h1 Pel&iacute;culas / Cortos / Series
+        p.mb-4 Usa el buscador para agregar el contenido a tu lista
+        form.form-inline.d-flex.justify-content-center
+          .input-group
+            input#form1.form-control(type='search' name='search' placeholder='Escribe el nombre...')
+            .input-group-append
+              button.btn.btn-primary(type='button' value="submit") Buscar
+    .row
+      .col-md-12
+        br
+    .row
+      #resultado.mx-auto.col-md-5
+        .card
+          img.card-img-top(src=res.Poster alt='Card image cap')
+          .card-body
+            h4.card-title Pelicula
+            p.card-text
+              | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
+            a.btn.btn-primary(href='#') Agregar a mi&nbsp;lista
+.py-5
+  .container
+    .row
+      .col-md-12
+        ul.nav.nav-tabs
+          li.nav-item
+            a.nav-link.active(href='' data-toggle='pill' data-target='#tabone')
+              i.fa.fa-film
+              | &nbsp;Mis pel&iacute;culas
+              br
+          li.nav-item
+            a.nav-link(href='' data-toggle='pill' data-target='#tabtwo')
+              i.fa.fa-video-camera
+              | &nbsp;Mis Cortos
+          li.nav-item
+            a.nav-link(href='' data-toggle='pill' data-target='#tabthree')
+              i.fa.fa-television
+              | &nbsp;Mis Series
+        .tab-content.mt-2
+          #tabone.tab-pane.fade.active.show(role='tabpanel')
+            // START OF CARDS
+            .container
+              ul.row.list-unstyled
+                li.col-md-4
+                  .thumbnail
+                    a.close &times;
+                    img.img-responsive(src='https://static.pingendo.com/cover-moon.svg' width='100' height='100')
+                    h3 Thumbnail label
+                    p Thumbnail caption...
+                li.col-md-4
+                  .thumbnail
+                    a.close &times;
+                    img.img-responsive(src='https://static.pingendo.com/cover-moon.svg' width='100' height='100')
+                    h3 Thumbnail label
+                    p Thumbnail caption...
+            // end of cards
+          #tabtwo.tab-pane.fade(role='tabpanel')
+            p
+              | Which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite.
+          #tabthree.tab-pane.fade(role='tabpanel')
+            p
+              | When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface.
+.py-3.bg-dark
+  .container
+    .row
+      .col-md-12.text-center.d-md-flex.align-items-center
+        i.d-block.fa.fa-stop-circle.fa-2x.mr-md-5.text-primary
+        ul.nav.mx-md-auto.d-flex.justify-content-center
+          li.nav-item
+            a.nav-link.active(href='#') Home
+          li.nav-item
+            a.nav-link(href='#') Features
+          li.nav-item
+            a.nav-link(href='#') Pricing
+          li.nav-item
+            a.nav-link(href='#') About
+        .row
+          .col-md-12.d-flex.align-items-center.justify-content-md-between.justify-content-center.my-2
+            a(href='#')
+              i.d-block.fa.fa-facebook-official.text-muted.fa-lg.mx-2
+            a(href='#')
+              i.d-block.fa.fa-instagram.text-muted.fa-lg.mx-2
+            a(href='#')
+              i.d-block.fa.fa-twitter.text-muted.fa-lg.ml-2
+    .row
+      .col-md-12.text-center
+        p.mt-2.mb-0.text-light(style='') &copy; 2020 Santiago Orlando. All rights reserved
+script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
+script.
+  $('.close').click(function() {
+  var $target = $(this).parents('li');
+  $target.hide('slow', function() {
+  $target.remove();
+  });
+  })
