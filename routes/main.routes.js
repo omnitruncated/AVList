@@ -9,7 +9,7 @@ app.get('/', function (req, res) {
 
   //Movies
   app.get('/main', authenticateJWT, function (req, res) {
-    res.render('main', {user: user}); //view
+    res.render('main', {user: req.user.usuario.username}); //view
   });
 
 }
