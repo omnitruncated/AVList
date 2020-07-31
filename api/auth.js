@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const {
     isEmpty,
     isUndefined
-  } = require('underscore');
+} = require('underscore');
 
 
 const accessTokenSecret = process.env.SECRET_TOKEN;
@@ -46,7 +46,7 @@ exports.login = (req, res) => {
             });
         }
         // Genera el token de autenticación
-        let accessToken  = jwt.sign({
+        let accessToken = jwt.sign({
             usuario: usuarioDB,
         }, accessTokenSecret, {
             expiresIn: process.env.CADUCIDAD_TOKEN
@@ -62,22 +62,25 @@ exports.login = (req, res) => {
 
         //Opciones para la cookie
         let options = {
-            path:"/",
-            sameSite:true,
+            path: "/",
+            sameSite: true,
             maxAge: 1000 * 60 * 60 * 24, // would expire after 24 hours
             httpOnly: true, // The cookie only accessible by the web server
         }
-    
+
         //Emviamos la cookie con el token al cliente
-        res.cookie('authorization',accessToken, options) 
-   
-  
-       res.json({
+        res.cookie('authorization', accessToken, options)
+
+        /*
+        res.json({
             ok: true,
             usuario: usuarioDB,
             accessToken,
             refreshToken,
         })
+        */
+
+        res.redirect('/main');
 
     })
 };
@@ -85,7 +88,9 @@ exports.login = (req, res) => {
 //token
 
 exports.token = (req, res) => {
-    const {  token } = req.body;
+    const {
+        token
+    } = req.body;
 
     if (!token) {
         return res.sendStatus(401);
@@ -117,32 +122,39 @@ exports.token = (req, res) => {
 
 exports.register = (req, res) => {
     let body = req.body;
-    let { username, email, password, role } = body;
+    let {
+        username,
+        email,
+        password,
+        role
+    } = body;
     let usuario = new Usuario({
-      username,
-      email,
-      password: bcrypt.hashSync(password, 10),
-      role
+        username,
+        email,
+        password: bcrypt.hashSync(password, 10),
+        role
     });
-  usuario.save((err, usuarioDB) => {
-      if (err) {
-        return res.status(400).json({
-           ok: false,
-           err,
-        });
-      }
-      res.json({
+    usuario.save((err, usuarioDB) => {
+        if (err) {
+            return res.status(400).json({
+                ok: false,
+                err,
+            });
+        }
+        res.json({
             ok: true,
             usuario: usuarioDB
-         });
-      })
-  };
+        });
+    })
+};
 
-  //logout
+//logout
 //Still need to improve this method...
 
 exports.logout = (req, res) => {
-    const {  token} = req.body;
+    const {
+        token
+    } = req.body;
     refreshTokens = refreshTokens.filter(token => t !== token);
 
     res.send("Logout successful");

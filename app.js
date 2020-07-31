@@ -10,7 +10,7 @@ const path = require('path');
 app.use(bodyParser.urlencoded({ extended: false }))
 
 
-//
+//Para manejar las cookies
 app.use(cookieParser())
 
 //Motor de vistas
@@ -24,15 +24,10 @@ app.use(bodyParser.json())
 require('./routes/movie.routes')(app);
 require('./routes/auth.routes')(app);
 require('./routes/omdb.routes')(app);
+require('./routes/main.routes')(app);
 
 //Path de archivos estáticos
 app.use(express.static(path.join(__dirname, './public')));
-
-
-//Index
-app.get('/', function (req, res) {
-  res.render('index'); //view
-});
 
 
 //-----------------------------

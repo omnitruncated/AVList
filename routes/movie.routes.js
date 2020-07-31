@@ -17,4 +17,5 @@ module.exports = (app) => {
 
     // Delete a Movie with movieId
     app.delete('/movies/:movieId', authenticateJWT, movies.delete);
+
 }

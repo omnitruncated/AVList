@@ -44,6 +44,7 @@ exports.findAll = (req, res) => {
             message: err.message || "Some error occurred while retrieving movies."
         });
     });
+    
 };
 
 // Find a single movie with a movieId
