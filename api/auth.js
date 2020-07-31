@@ -60,6 +60,7 @@ exports.login = (req, res) => {
 
         refreshTokens.push(refreshToken);
 
+        //Opciones para la cookie
         let options = {
             path:"/",
             sameSite:true,
@@ -67,6 +68,7 @@ exports.login = (req, res) => {
             httpOnly: true, // The cookie only accessible by the web server
         }
     
+        //Emviamos la cookie con el token al cliente
         res.cookie('authorization',accessToken, options) 
    
   

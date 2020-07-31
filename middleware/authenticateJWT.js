@@ -6,16 +6,21 @@ const accessTokenSecret = process.env.SECRET_TOKEN;
 const middlewares = {
 
     authenticateJWT: (req, res, next) => {
-        const authHeader = req.headers.authorization;
-    
-        if (authHeader) {
-            const token = authHeader.split(' ')[1];
-    
+
+        //Gets token from cookie
+        const cookie = "Bearer " + req.cookies['authorization'];
+
+        //Gets token from header authorization
+        // const authHeader = req.headers.authorization;
+
+        if (cookie) {
+            const token = cookie.split(' ')[1];
+
             jwt.verify(token, accessTokenSecret, (err, user) => {
                 if (err) {
                     return res.sendStatus(403);
                 }
-    
+
                 req.user = user;
                 next();
             });
@@ -24,6 +29,6 @@ const middlewares = {
         }
     }
 
-    
+
 };
 module.exports = middlewares;

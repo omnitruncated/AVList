@@ -1,5 +1,5 @@
 require('./config/config');
-
+const cookieParser = require('cookie-parser')
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose');
@@ -8,6 +8,10 @@ const path = require('path');
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
+
+
+//
+app.use(cookieParser())
 
 //Motor de vistas
 app.set('view engine', 'pug');
