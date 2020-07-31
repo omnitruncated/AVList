@@ -2,8 +2,11 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const Usuario = require('../models/usuario');
 const bcrypt = require('bcrypt');
+const {
+    isEmpty,
+    isUndefined
+  } = require('underscore');
 
-const app = express();
 
 const accessTokenSecret = process.env.SECRET_TOKEN;
 const refreshTokenSecret = process.env.REFRESH_TOKEN;
@@ -11,7 +14,9 @@ const refreshTokenSecret = process.env.REFRESH_TOKEN;
 
 var refreshTokens = [];
 
-app.post('/login', function (req, res) {
+// login
+
+exports.login = (req, res) => {
     let body = req.body;
     Usuario.findOne({
         email: body.email
@@ -73,9 +78,11 @@ app.post('/login', function (req, res) {
         })
 
     })
-});
+};
 
-app.post('/token', (req, res) => {
+//token
+
+exports.token = (req, res) => {
     const {  token } = req.body;
 
     if (!token) {
@@ -102,14 +109,39 @@ app.post('/token', (req, res) => {
             accessToken
         });
     });
-});
+};
 
+//register
+
+exports.register = (req, res) => {
+    let body = req.body;
+    let { username, email, password, role } = body;
+    let usuario = new Usuario({
+      username,
+      email,
+      password: bcrypt.hashSync(password, 10),
+      role
+    });
+  usuario.save((err, usuarioDB) => {
+      if (err) {
+        return res.status(400).json({
+           ok: false,
+           err,
+        });
+      }
+      res.json({
+            ok: true,
+            usuario: usuarioDB
+         });
+      })
+  };
+
+  //logout
 //Still need to improve this method...
-app.post('/logout', (req, res) => {
+
+exports.logout = (req, res) => {
     const {  token} = req.body;
     refreshTokens = refreshTokens.filter(token => t !== token);
 
     res.send("Logout successful");
-});
-
-module.exports = app;
+};

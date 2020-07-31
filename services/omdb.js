@@ -1,9 +1,8 @@
-const express = require('express');
-const app = express();
 const axios = require('axios');
 
+//Get movie title data from omdb
 
-app.get('/getMovies', function (req, res) {
+exports.search = (req, res) => {
 
     var title = req.body.name;
     var url = 'http://omdbapi.com/?' + 't=' + title + '&plot=full&apikey=70d4d638';
@@ -25,6 +24,5 @@ app.get('/getMovies', function (req, res) {
         .catch(err => console.log(err))
 
 
-});
+};
 
-module.exports = app;

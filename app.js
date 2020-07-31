@@ -16,12 +16,19 @@ app.set('view engine', 'pug');
 app.use(bodyParser.json())
 
 // Configuracion global de rutas
-app.use(require('./routes/routes'));
 
 require('./routes/movie.routes')(app);
+require('./routes/auth.routes')(app);
+require('./routes/omdb.routes')(app);
 
 //Path de archivos estáticos
 app.use(express.static(path.join(__dirname, './public')));
+
+
+//Index
+app.get('/', function (req, res) {
+  res.render('index'); //view
+});
 
 
 //-----------------------------
