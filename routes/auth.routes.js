@@ -1,5 +1,5 @@
 const auth = require('../api/auth.js');
-const authenticateJWT = require('../middleware/auth').authenticateJWT;
+const authenticateJWT = require('../middleware/authenticateJWT').authenticateJWT;
 
 module.exports = (app) => {
 

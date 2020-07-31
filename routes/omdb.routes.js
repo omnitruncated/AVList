@@ -1,5 +1,5 @@
 const omdb = require('../services/omdb.js');
-const authenticateJWT = require('../middleware/auth').authenticateJWT;
+const authenticateJWT = require('../middleware/authenticateJWT').authenticateJWT;
 
 module.exports = (app) => {
 

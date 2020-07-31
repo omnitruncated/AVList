@@ -1,5 +1,5 @@
 const movies = require('../api/movies.js');
-const authenticateJWT = require('../middleware/auth').authenticateJWT;
+const authenticateJWT = require('../middleware/authenticateJWT').authenticateJWT;
 
 module.exports = (app) => {
 
