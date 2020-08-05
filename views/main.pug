@@ -33,9 +33,9 @@ nav.navbar.navbar-expand-md.navbar-dark.bg-dark
         p.mb-4 Busca contenido en Open Movie Database y agregalo a tu lista
         form.form-inline.d-flex.justify-content-center
           .input-group
-            input#form1.form-control(type='search' name='search' placeholder='Escribe el nombre...')
+            input#form1.form-control(type='search' name='title' placeholder='Escribe el nombre...')
             .input-group-append
-              button.btn.btn-primary(type='button' value="submit") Buscar
+              button.btn.btn-primary(type='button' value="submit" method='GET' action='/search') Buscar
     .row
       .col-md-12
         br
