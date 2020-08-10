@@ -7,6 +7,7 @@
 * Tests unitarios con Jest y Supertest
 * Pug como motor de vistas con bootstrap
 * Pantallas de registro, login y pantalla principal
+
 *Pantalla principal: (Al ingresar hace una llamada al servicio de OMDB y muestra una búsqueda de 5 películas y 5 series)*
 
 **Una vez descargado, ejecutar en terminal:**
