@@ -18,7 +18,7 @@ const middlewares = {
 
             jwt.verify(token, accessTokenSecret, (err, user) => {
                 if (err) {
-                    return res.sendStatus(403);
+                    return res.sendStatus(401);
                 }
 
                 req.user = user;

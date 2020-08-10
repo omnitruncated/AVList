@@ -4,7 +4,7 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1')
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' type='text/css')
   link(rel='stylesheet' href='../css/theme.css' type='text/css')
-  script(src='jquery-3.5.1.min.js')
+  script(src='/vendor/jquery/jquery.min.js')
 nav.navbar.navbar-expand-md.navbar-dark.bg-dark
   .container
     button.navbar-toggler.navbar-toggler-right.border-0(type='button' data-toggle='collapse' data-target='#navbar12')
@@ -25,29 +25,7 @@ nav.navbar.navbar-expand-md.navbar-dark.bg-dark
           a.nav-link.text-primary(href='#')
             i.fa.fa-fw.fa-sign-out
             | Salir
-.py-5.text-center(style='background-image: linear-gradient(to left bottom, rgba(189, 195, 199, .75), rgba(44, 62, 80, .75)); background-size: 100%;')
-  .container
-    .row
-      .mx-auto.col-md-6
-        h1 Pel&iacute;culas / Cortos / Series
-        p.mb-4 Busca contenido en Open Movie Database y agregalo a tu lista
-        form.form-inline.d-flex.justify-content-center
-          .input-group
-            input#form1.form-control(type='search' name='title' placeholder='Escribe el nombre...')
-            .input-group-append
-              button.btn.btn-primary(type='button' value="submit" method='GET' action='/search') Buscar
-    .row
-      .col-md-12
-        br
-    .row
-      #resultado.mx-auto.col-md-5
-        .card
-          img.card-img-top(src="" alt='Card image cap')
-          .card-body
-            h4.card-title Pelicula
-            p.card-text
-              | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
-            a.btn.btn-primary(href='#') Agregar a mi&nbsp;lista
+
 .py-5
   .container
     .row
@@ -56,40 +34,79 @@ nav.navbar.navbar-expand-md.navbar-dark.bg-dark
           li.nav-item
             a.nav-link.active(href='' data-toggle='pill' data-target='#tabone')
               i.fa.fa-film
-              | &nbsp;Mis pel&iacute;culas
+              | &nbsp;Movies
               br
           li.nav-item
             a.nav-link(href='' data-toggle='pill' data-target='#tabtwo')
-              i.fa.fa-video-camera
-              | &nbsp;Mis Cortos
-          li.nav-item
-            a.nav-link(href='' data-toggle='pill' data-target='#tabthree')
               i.fa.fa-television
-              | &nbsp;Mis Series
+              | &nbsp;Series
         .tab-content.mt-2
           #tabone.tab-pane.fade.active.show(role='tabpanel')
             // START OF CARDS
             .container
               ul.row.list-unstyled
-                li.col-md-4
-                  .thumbnail
-                    a.close &times;
-                    img.img-responsive(src='https://static.pingendo.com/cover-moon.svg' width='100' height='100')
-                    h3 Thumbnail label
-                    p Thumbnail caption...
-                li.col-md-4
-                  .thumbnail
-                    a.close &times;
-                    img.img-responsive(src='https://static.pingendo.com/cover-moon.svg' width='100' height='100')
-                    h3 Thumbnail label
-                    p Thumbnail caption...
+                each movie in data.data.movies
+                  li.col-md-4
+                    .thumbnail
+                      a.close &times;
+                      -var image = movie.Poster !== "N/A" ? movie.Poster : "images/genericPoster.png"; 
+                      img.img-responsive(src=image width='50%' height='50%')
+                      h4 #{movie.Title}
+                      p Plot: #{movie.details.Plot}
+                      h6 Year: #{movie.details.Year} 
+                      h6 Rated: #{movie.details.Rated}
+                      h6 Released: #{movie.details.Released}                       
+                      h6 Runtime: #{movie.details.Runtime}
+                      h6 Genre: #{movie.details.Genre}
+                      h6 Director: #{movie.details.Director}
+                      h6 Writer: #{movie.details.Writer}
+                      h6 Actors: #{movie.details.Actors}
+                      h6 Language: #{movie.details.Language}
+                      h6 Country: #{movie.details.Country}
+                      h6 Awards: #{movie.details.Awards}
+                      h6 Metascore: #{movie.details.Metascore}
+                      h6 IMDB: #{movie.details.imdbRating}
+                      h6 IMDB votes:#{movie.details.imdbVotes}
+                      h6 IMDB ID: #{movie.details.imdbID}
+                      h6 DVD: #{movie.details.DVD}
+                      h6 Box Office: #{movie.details.BoxOffice}
+                      h6 Production: #{movie.details.Production}
+                      h6 Website: #{movie.details.Website}
             // end of cards
+
           #tabtwo.tab-pane.fade(role='tabpanel')
-            p
-              | Which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite.
-          #tabthree.tab-pane.fade(role='tabpanel')
-            p
-              | When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface.
+            // START OF CARDS
+            .container
+              ul.row.list-unstyled
+                each serie in data.data.series
+                  li.col-md-4
+                    .thumbnail
+                      a.close &times;
+                       -var image = serie.Poster !== "N/A" ? serie.Poster : "images/genericPoster.png"; 
+                      img.img-responsive(src=image width='50%' height='50%')
+                      h4 #{serie.Title}
+                      p #{serie.details.Plot}
+                      h6 Year: #{serie.details.Year} 
+                      h6 Rated: #{serie.details.Rated}
+                      h6 Released: #{serie.details.Released}                       
+                      h6 Runtime: #{serie.details.Runtime}
+                      h6 Genre: #{serie.details.Genre}
+                      h6 Director: #{serie.details.Director}
+                      h6 Writer: #{serie.details.Writer}
+                      h6 Actors: #{serie.details.Actors}
+                      h6 Language: #{serie.details.Language}
+                      h6 Country: #{serie.details.Country}
+                      h6 Awards: #{serie.details.Awards}
+                      h6 Metascore: #{serie.details.Metascore}
+                      h6 IMDB: #{serie.details.imdbRating}
+                      h6 IMDB votes:#{serie.details.imdbVotes}
+                      h6 IMDB ID: #{serie.details.imdbID}
+                      h6 DVD: #{serie.details.DVD}
+                      h6 Box Office: #{serie.details.BoxOffice}
+                      h6 Production: #{serie.details.Production}
+                      h6 Website: #{serie.details.Website}
+            // end of cards
+
 .py-3.bg-dark
   .container
     .row

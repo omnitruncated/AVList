@@ -3,8 +3,9 @@ const authenticateJWT = require('../middleware/authenticateJWT').authenticateJWT
 
 module.exports = (app) => {
 
-    //search movies by title
-    app.get('/search', authenticateJWT, omdb.search);
+    //search multple movies
+    app.get('/omdb/search', authenticateJWT, omdb.search);
 
+    app.get('/omdb/searchFive', authenticateJWT, omdb.searchFiveById);
 
 }

@@ -2,15 +2,9 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const Usuario = require('../models/usuario');
 const bcrypt = require('bcrypt');
-const {
-    isEmpty,
-    isUndefined
-} = require('underscore');
-
 
 const accessTokenSecret = process.env.SECRET_TOKEN;
 const refreshTokenSecret = process.env.REFRESH_TOKEN;
-
 
 var refreshTokens = [];
 

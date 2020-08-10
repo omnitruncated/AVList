@@ -1,11 +1,10 @@
 
 {
-    "_id" : ObjectId("5e1cab732938e83444c1f772"),
-    "role" : "ADMIN",
-    "nombre" : "admin",
-    "email" : "admin@mail.com",
-    "password" : "$2b$10$2vuHym4SpsoNyl1whLKTBeUVnnWFgEgljb07amshkS9WRbVxDt9A6" // 123456,
-    "__v" : 0
+    "role": "ADMIN",
+    "username": "Santiago",
+    "email": "admin@gmail.com",
+    "password": "$2b$10$ramtlsRvNV8uRnJQD/dHceUyWTHgzzAWV3jgHvPW38t4WhEql5G0e", //hola
+    "__v": 0
 },
 {
     "_id" : ObjectId("5e1cab752938e83444c1f773"),
