@@ -83,9 +83,9 @@ describe('GET /omdb/searchFive', () => {
         year: "2000"
       })
       .then((response) => {
-        var orderedData =
+        var orderedData = response.body.data.movies;
           //MOVIES ORDER RESULT
-          response.body.data.movies.sort(function (a, b) {
+          orderedData.sort(function (a, b) {
 
             //Por titulo alfabeticamente
             if (a.Title.toLowerCase() < b.Title.toLowerCase()) return -1;
@@ -115,9 +115,9 @@ describe('GET /omdb/searchFive', () => {
         year: "2000"
       })
       .then((response) => {
-        var orderedData =
+        var orderedData = response.body.data.series;
           //SERIES ORDER RESULT
-          response.body.data.series.sort(function (a, b) {
+          orderedData.sort(function (a, b) {
 
             //Cantidad de temporadas
             if (a.details.totalSeasons < b.details.totalSeasons) return -1;
