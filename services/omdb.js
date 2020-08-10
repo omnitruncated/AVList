@@ -76,7 +76,7 @@ exports.searchFiveById = (req, res) => {
         error: error.message
     }));
 
-    //Making a request by each IMDB ID in order to get every movie details and saving it inside every element of the array
+    //Making a request by each IMDB ID in order to get each movie/serie details and save it inside each element of the array
     async function getDetails(responseData) {
         for (i in responseData.movies) {
 
