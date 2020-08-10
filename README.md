@@ -21,17 +21,18 @@ npm test
 ```
 
 > [!IMPORTANT]
+>
 > Para poder testear las funcionalidades, es importane tener instalado [mongoDB](https://www.mongodb.com/try/download/community?tck=docs_server).
 >
 >Luego, agregar en el server local de mongoDB los usuarios agregados dentro de usersDB.txt (o crear usuarios nuevos mediante el endpoint /register).
+>
+>Una vez configurado todo, para ingresar a la vista, correr la aplicacion con *[nodemon](https://nodemon.io/)* o el debugger de Node.js
+>
+>Se ejecutará en http://localhost:3000
 
-Una vez configurado todo, para ingresar a la vista, correr la aplicacion con *[nodemon](https://nodemon.io/)* o el debugger de Node.js
+# WORKING API ENDPOINTS
 
-Se ejecutará en http://localhost:3000
-
-#WORKING API ENDPOINTS
-
-Register (POST)
+**Register (POST)**
 http://localhost:3000/register
 
 
